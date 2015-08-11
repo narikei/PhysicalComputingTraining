@@ -7,7 +7,7 @@ const int buttonPinA = 5;
 const int buttonPinB = 6;
 
 boolean gamePlaying = false;
-int speed = 200;
+int speed = 100;
 int dir = 1; // 0:top, 1:right, 2:bottom, 3:left
 int snakeLength = 0;
 
@@ -30,7 +30,7 @@ void setup() {
 void loop() {
   if (gamePlaying) {
     // LED表示
-    for (int s = 0; s < speed / snakeLength; s++) {
+    for (int s = 0; s < speed; s++) {
       // 蛇表示
       for (int i = 0; i < snakeLength; i++) {
         digitalWrite(latchPin, 0);
@@ -74,7 +74,7 @@ void loop() {
       snake[snakeLength][1] = snake[0][1];
       snakeLength++;
       putBait();
-      speed = speed * 0.99;
+      speed = speed * 0.8;
     }    
   } else {
     if (digitalRead(buttonPinA) == HIGH && digitalRead(buttonPinB) == HIGH) {
@@ -87,6 +87,7 @@ void loop() {
 
 void gameInit() {
   gamePlaying = true;
+  speed = 100;
   dir = 1;
   snake[64][2] = {};
   
