@@ -26,7 +26,7 @@ void loop(){
   value = value / 5;
 
   Serial.println("+");
-  Serial.println(value);
+  Serial.println(value);                 
 
   // ジャンブ
   if (value < 25) {
